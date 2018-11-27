@@ -24,7 +24,8 @@ class LineChart extends AbstractChart {
             cx={paddingRight + (i * (width - paddingRight) / dataset.data.length)}
             cy={((height / 4 * 3 * (1 - ((x - Math.min(...dataset.data)) / this.calcScaler(dataset.data)))) + paddingTop)}
             r="4"
-            fill={this.props.chartConfig.color(0.7)}
+            // fill={this.props.chartConfig.color(0.7)}
+            fill={dataset.svg.fill}
           />)
       })
     })
@@ -79,7 +80,8 @@ class LineChart extends AbstractChart {
           key = {index}
           points={points.join(' ')}
           fill="none"
-          stroke={this.props.chartConfig.color(0.2)}
+          // stroke={this.props.chartConfig.color(0.2)}
+          stroke={dataset.svg.fill}
           strokeWidth={3}
         />
       )
@@ -115,6 +117,7 @@ class LineChart extends AbstractChart {
     
   }
 
+  
   renderBezierLine = config => {
     let output = [];
     config.data.map((dataset,index)=>{
@@ -124,7 +127,8 @@ class LineChart extends AbstractChart {
             key = {index}
             d={result}
             fill="none"
-            stroke={this.props.chartConfig.color(0.2)}
+            // stroke={this.props.chartConfig.color(0.2)}
+            stroke={dataset.svg.fill}
             strokeWidth={3}
           />
         )
@@ -237,3 +241,4 @@ class LineChart extends AbstractChart {
 }
 
 export default LineChart
+
