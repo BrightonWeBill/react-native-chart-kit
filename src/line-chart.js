@@ -195,9 +195,9 @@ class LineChart extends AbstractChart {
             })}
             {this.renderHorizontalLabels({
               ...config,
-              count: (Math.min(...data.datasets[0].data) === Math.max(...data.datasets[0].data)) ?
+              count: (Math.min(...data.datasets[0].data.concat(data.datasets[1].data)) === Math.max(...data.datasets[0].data.concat(data.datasets[1].data))) ?
                 1 : 4,
-              data: data.datasets[0].data,
+              data: data.datasets[1].data.concat(data.datasets[0].data),
               paddingTop,
               paddingRight
             })}
@@ -241,4 +241,3 @@ class LineChart extends AbstractChart {
 }
 
 export default LineChart
-
